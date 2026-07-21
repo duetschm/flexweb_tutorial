@@ -286,7 +286,7 @@ def plot_map(ds, cmap, levels, norm, lon1=None, lat1=None, lon2=None, lat2=None)
     data.values = np.ma.MaskedArray(data, mask=data == 0.0).filled(1e-10)
     
     # add title
-    ax.set_title(data.long_name, loc="left")
+    ax.set_title(ds["spec001_mr"].long_name, loc="left")
     ax.set_title(np.datetime_as_string(data["time"], unit="h"), loc="right")
     
     # plot data
@@ -308,7 +308,7 @@ def plot_map(ds, cmap, levels, norm, lon1=None, lat1=None, lon2=None, lat2=None)
         plt.scatter([lon2], [lat2], marker='v', transform=ccrs.PlateCarree(), color='black', zorder=3)
     
     cax = fig.add_subplot(gs[0,2])
-    cbar = plt.colorbar(h1, ax=ax, cax=cax, label=data.units)
+    cbar = plt.colorbar(h1, ax=ax, cax=cax, label=ds["spec001_mr"].units)
 
     nearest_int = np.rint(np.log10(levels))
     is_whole = np.isclose(np.log10(levels), nearest_int, atol=1e-12)
@@ -344,7 +344,7 @@ def plot_map_anim(ds, cmap, levels, norm):
     data.values = np.ma.MaskedArray(data, mask=data == 0.0).filled(1e-10)
 
     # add title
-    ax.set_title(data.long_name, loc="left")
+    ax.set_title(ds["spec001_mr"].long_name, loc="left")
 
     # plot data
     def update(n, data, cmap, levels, norm):
@@ -374,7 +374,7 @@ def plot_map_anim(ds, cmap, levels, norm):
     # initialize h1 for colorbar
     h1 = update(0, data, cmap, levels, norm)
     cax = fig.add_subplot(gs[0,2])
-    cbar = plt.colorbar(h1, ax=ax, cax=cax, label=data.units)
+    cbar = plt.colorbar(h1, ax=ax, cax=cax, label=ds["spec001_mr"].units)
 
     nearest_int = np.rint(np.log10(levels))
     is_whole = np.isclose(np.log10(levels), nearest_int, atol=1e-12)
