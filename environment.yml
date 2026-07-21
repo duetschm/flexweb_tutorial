@@ -13,3 +13,5 @@ dependencies:
   - netcdf4=1.7.1
   - cftime=1.6.4
   - ipython=8.24.0
+variables:
+  CARTOPY_DATA_DIR: /home/jovyan/cartopy_data
