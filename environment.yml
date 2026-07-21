@@ -9,4 +9,6 @@ dependencies:
   - cartopy=0.22.0
   - pyproj=3.6.1
   - shapely=2.0.4
+  - netcdf4=1.7.1
+  - cftime=1.6.4
   - ipython=8.24.0
