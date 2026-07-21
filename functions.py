@@ -66,11 +66,11 @@ def draw_map(ax, lon, lat, release_lon, release_lat):
         The modified axes object with map features.
     """
 
-    ax.add_feature(cartopy.feature.OCEAN, facecolor=[1.0] * 3)
-    ax.add_feature(cartopy.feature.LAND, facecolor=[0.9] * 3)
-    ax.add_feature(cartopy.feature.BORDERS, linewidth=0.2, edgecolor=[0.4] * 3)
+    ax.add_feature(cartopy.feature.OCEAN.with_scale("110m"), facecolor=[1.0] * 3)
+    ax.add_feature(cartopy.feature.LAND.with_scale("110m"), facecolor=[0.9] * 3)
+    ax.add_feature(cartopy.feature.BORDERS.with_scale("110m"), linewidth=0.2, edgecolor=[0.4] * 3)
     lakes = cartopy.feature.NaturalEarthFeature(
-        "physical", "lakes", "50m",
+        "physical", "lakes", "110m",
         edgecolor="black",
         facecolor="white",
     )
@@ -107,7 +107,7 @@ def draw_map(ax, lon, lat, release_lon, release_lat):
         ylocs=np.arange(-80, 90, 10),
     )
 
-    ax.coastlines()
+    ax.coastlines(resolution="110m")
 
     return ax
 
